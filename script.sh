@@ -5,6 +5,7 @@ rm -rf /etc/ssh/sshd_config
 cp -rp ssh_config /etc/ssh/
 cp -rp sshd_config /etc/ssh/
 cp -rp banner1 /etc/ssh/
+cp -rp inputrc /etc/
 service sshd restart
 rmmod -v pcspkr
 yum install ssmtp* -y
