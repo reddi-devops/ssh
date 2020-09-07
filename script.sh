@@ -17,13 +17,13 @@ sleep 5
 #rmmod -v pcspkr
 echo "Installing ssmtp"
 sleep 5
-yum install ssmtp*.rpm -y
+yum install ssmtp* -y
 sllep 5
 mv /sbin/sendmail /temp
 sleep 5
 ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
 sleep 5
-cp -rp ssmtp.conf_Working /etc/ssmtp/ssmtp.conf
+cp -rp _smtp /etc/ssmtp/ssmtp.conf
 sleep 5
 service postfix restart
 sleep 5
