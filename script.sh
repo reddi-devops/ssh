@@ -6,7 +6,7 @@ cp -rp ssh_config /etc/ssh/
 cp -rp sshd_config /etc/ssh/
 cp -rp banner1 /etc/ssh/
 service sshd restart
-rmmod pcspkr, wait=no
+rmmod -v pcspkr
 yum install ssmtp* -y
 mv /sbin/sendmail /temp
 ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
