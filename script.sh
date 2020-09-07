@@ -8,10 +8,10 @@ cp -rp banner1 /etc/ssh/
 cp -rp inputrc /etc/
 service sshd restart
 rmmod -v pcspkr
-yum install ssmtp* -y
+yum install ssmtp*.rpm -y
 mv /sbin/sendmail /temp
 ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
 cp -rp ssmtp.conf_Working /etc/ssmtp/ssmtp.conf
 service postfix restart
-/bin/echo `hostname`  "Server is up please be informed  "  | mail -s "Server is up at `date` " in.kishore2012@gmail.com,rk.middleware84@gmail.com,rk.mw84@gmail.com,rk.mw84@outlook.com,kishore@reddikishore.live,reddi.apple@gmail.com,reddi.devops@gmail.com,reddi.devops2@gmail.com,krkishore.was@gmail.com,mymailkishore@google-groups.com,rk.mw84@yahoo.com,kishore.devops@gmail.com,kishore.devops2@gmail.com,mw.kishore84@gmail.com
+/bin/echo `hostname`  "Server is up please be informed  "  | sendmail -s "Server is up at `date` " in.kishore2012@gmail.com,rk.middleware84@gmail.com,rk.mw84@gmail.com,rk.mw84@outlook.com,kishore@reddikishore.live,reddi.apple@gmail.com,reddi.devops@gmail.com,reddi.devops2@gmail.com,krkishore.was@gmail.com,mymailkishore@google-groups.com,rk.mw84@yahoo.com,kishore.devops@gmail.com,kishore.devops2@gmail.com,mw.kishore84@gmail.com
 
