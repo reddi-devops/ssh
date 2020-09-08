@@ -17,7 +17,7 @@ sleep 5
 #rmmod -v pcspkr
 echo "Installing ssmtp"
 sleep 5
-yum install ssmtp* -y
+yum install ssmtp-2.61-11.5.3.x86_64.rpm -y
 sllep 5
 mv /sbin/sendmail /temp
 sleep 5
