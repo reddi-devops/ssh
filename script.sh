@@ -12,6 +12,7 @@ timedatectl set-timezone "Asia/Kolkata"
 cp -rp banner1 /etc/ssh/
 sleep 5
 cp -rp inputrc /etc/
+cp config /etc/selinux/
 sleep 5
 service sshd restart
 sleep 5
