@@ -29,6 +29,8 @@ cp -rp _smtp /etc/ssmtp/ssmtp.conf
 sleep 5
 service postfix restart
 sleep 5
+echo " adding email crotab"
+crontab cron.sh
 /bin/echo `hostname`  "Server is up please be informed  "  | mail -s "Server is up at `date` " in.kishore2012@gmail.com,rk.middleware84@gmail.com,rk.mw84@gmail.com,rk.mw84@outlook.com,kishore@reddikishore.live,reddi.apple@gmail.com,reddi.devops@gmail.com,reddi.devops2@gmail.com,krkishore.was@gmail.com,mymailkishore@google-groups.com,rk.mw84@yahoo.com,kishore.devops@gmail.com,kishore.devops2@gmail.com,mw.kishore84@gmail.com
 echo "Installing Kubernetes"
 swapoff -a
