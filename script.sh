@@ -13,7 +13,10 @@ sleep 2
 cp -rp inputrc /etc/
 echo "disabling Selinux"
 cp config /etc/selinux/
-
+echo "Installing Cockpit"
+yum install cockpit -y
+systemctl enable cockpit
+systemctl start cockpit
 service sshd restart
 #rmmod -v pcspkr
 echo "Installing ssmtp"
