@@ -30,6 +30,8 @@ crontab cron.sh
 echo " Mail setup is testing"
 /bin/echo `hostname`  "Server is up please be informed  "  | mail -s "Server is up at `date` " in.kishore2012@gmail.com,rk.middleware84@gmail.com,rk.mw84@gmail.com,rk.mw84@outlook.com,kishore@reddikishore.live,reddi.apple@gmail.com,reddi.devops@gmail.com,reddi.devops2@gmail.com,krkishore.was@gmail.com,mymailkishore@google-groups.com,rk.mw84@yahoo.com,kishore.devops@gmail.com,kishore.devops2@gmail.com,mw.kishore84@gmail.com
 echo "Installing Kubernetes"
+cp k9s /usr/local/bin/
+cp k9s /bin/
 echo "Disabling swap"
 swapoff -a
 setenforce 0
