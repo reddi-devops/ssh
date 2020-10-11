@@ -107,4 +107,20 @@ echo " Please wait till the kube cluster comes up"
 sleep 60
 kubectl get nodes
 echo "=========================================================="
+yum remove java*
+source /root/.bash_profile
+echo $JAVA_HOME
 echo "ALL are Done"
+echo "Installing Apache"
+tar -xzf pcre-8.44.tar.gz
+cd pcre-8.44
+./configure --prefix=/usr/pcre
+make
+make install
+cd /rot/ssh
+tar -xzvf httpd-2.4.9.tar.gz
+cd httpd-2.4.9
+./configure --prefix=/opt/apache249 --enable-so --enable-mods-shared=all --enable-proxy --with-pcre=/usr/pcre
+make
+make install
+
