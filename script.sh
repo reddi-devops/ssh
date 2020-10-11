@@ -37,6 +37,26 @@ rm /etc/xrdp/xrdp.ini
 cp xrdp.ini /etc/xrdp/
 systemctl start xrdp
 systemctl enable xrdp
+yum install gcc-c++ -y
+yum remove java*
+echo " Downloading and setting up Jboss and apache"
+wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz
+slepp 30
+tar -xzf jdk-8u241-linux-x64.tar.gz -C /opt/
+rm -rf /root/.bash_profile
+cp .bash_profile /root/
+source /root/.bash_profile
+echo "JAVA_HOME is " $JAVA_HOME
+wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jboss-eap-5.2.0.zip
+sleep 20
+unzip jboss-eap-5.2.0.zip
+mv jboss-eap-5.2 /opt/jboss52
+export JBOSS=/opt/jboss52
+cd $JBOSS/jboss-as/server
+cp -rp all Node-1
+cp -rp all Node-2
+cp -rp all Node-3
+cp -rp all Node-4
 
 echo "Installing Kubernetes"
 
