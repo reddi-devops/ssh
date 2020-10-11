@@ -38,7 +38,7 @@ cp xrdp.ini /etc/xrdp/
 systemctl start xrdp
 systemctl enable xrdp
 yum install gcc-c++ -y
-yum remove java*
+yum remove java -y
 echo " Downloading and setting up Jboss and apache"
 wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz
 slepp 30
