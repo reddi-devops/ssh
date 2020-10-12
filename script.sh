@@ -114,6 +114,7 @@ echo "ALL are Done"
 echo "Installing Apache"
 #chmod 777 *.gz
 #tar -xzf pcre-8.44.tar.gz
+wget https://s3.us-east-2.amazonaws.com/kishore.middleware/pcre-8.44.tar.gz
 chmod 777 pcre-8.44.tar.gz
 echo "files are "
 echo "=============================================================="
