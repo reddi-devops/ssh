@@ -109,11 +109,14 @@ kubectl get nodes
 echo "=========================================================="
 yum remove java* -y
 source /root/.bash_profile
-echo $JAVA_HOME
+echo  "JAVA_HOME is " $JAVA_HOME
 echo "ALL are Done"
 echo "Installing Apache"
-chmod 777 *.gz
-tar -xzf pcre-8.44.tar.gz
+#chmod 777 *.gz
+#tar -xzf pcre-8.44.tar.gz
+chmod 777 pcre-8.44.tar.gz
+tar -xzvf pcre-8.44.tar.gz
+tar -xzvf httpd-2.4.9.tar.gz
 sleep 10
 cd pcre-8.44
 sleep 10
