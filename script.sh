@@ -115,6 +115,11 @@ echo "Installing Apache"
 #chmod 777 *.gz
 #tar -xzf pcre-8.44.tar.gz
 chmod 777 pcre-8.44.tar.gz
+echo "files are "
+echo "=============================================================="
+ls -ltr *.tar.gz
+echo "============================================================="
+sleep 30
 chown -R root:root pcre-8.44.tar.gz
 chown -R root:root httpd-2.4.9.tar.gz
 tar -xzvf pcre-8.44.tar.gz
