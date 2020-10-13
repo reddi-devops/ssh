@@ -124,6 +124,7 @@ echo "=============================================================="
 ls -ltr *.tar.gz
 echo "============================================================="
 sleep 30
+chmod 777 httpd-2.4.46.tar.gz
 chown -R root:root pcre-8.44.tar.gz
 chown -R root:root httpd-2.4.46.tar.gz
 tar -xzvf pcre-8.44.tar.gz
@@ -140,7 +141,7 @@ sleep 20
 make install
 sleep 20
 cd /root/ssh
-#ar -xzvf httpd-2.4.9.tar.gz
+#itar -xzvf httpd-2.4.46.tar.gz
 cd httpd-2.4.46
 ./configure --prefix=/opt/apache2446 --enable-so --enable-mods-shared=all --enable-proxy --with-pcre=/usr/pcre --enable-debug --enable-ssl
 sleep 20
