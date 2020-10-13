@@ -15,6 +15,7 @@ echo "disabling Selinux"
 cp config /etc/selinux/
 echo "Installing Cockpit"
 yum install cockpit -y
+yum install openssl* -y
 systemctl enable cockpit
 systemctl start cockpit
 service sshd restart
@@ -38,6 +39,7 @@ cp xrdp.ini /etc/xrdp/
 systemctl start xrdp
 systemctl enable xrdp
 yum install gcc-c++ -y
+yum install expat-devel -y
 yum remove java -y
 echo " Downloading and setting up Jboss and apache"
 wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz
@@ -114,6 +116,7 @@ echo "ALL are Done"
 echo "Installing Apache"
 #chmod 777 *.gz
 #tar -xzf pcre-8.44.tar.gz
+wget https://s3.us-east-2.amazonaws.com/kishore.middleware/httpd-2.4.46.tar.gz
 wget https://s3.us-east-2.amazonaws.com/kishore.middleware/pcre-8.44.tar.gz
 chmod 777 pcre-8.44.tar.gz
 echo "files are "
@@ -122,11 +125,11 @@ ls -ltr *.tar.gz
 echo "============================================================="
 sleep 30
 chown -R root:root pcre-8.44.tar.gz
-chown -R root:root httpd-2.4.9.tar.gz
+chown -R root:root httpd-2.4.46.tar.gz
 tar -xzvf pcre-8.44.tar.gz
-tar -xzvf httpd-2.4.9.tar.gz
+tar -xzvf httpd-2.4.46.tar.gz
 chown -R root:root pcre-8.44
-chown -R root:root httpd-2.4.9
+chown -R root:root httpd-2.4.46
 sleep 10
 cd pcre-8.44
 sleep 10
@@ -136,14 +139,15 @@ make
 sleep 20
 make install
 sleep 20
-cd /rot/ssh
+cd /root/ssh
 #ar -xzvf httpd-2.4.9.tar.gz
-cd httpd-2.4.9
-./configure --prefix=/opt/apache249 --enable-so --enable-mods-shared=all --enable-proxy --with-pcre=/usr/pcre
+cd httpd-2.4.46
+./configure --prefix=/opt/apache2446 --enable-so --enable-mods-shared=all --enable-proxy --with-pcre=/usr/pcre --enable-debug --enable-ssl
 sleep 20
 make
 sleep 20
 make install
+rm -rf jboss* jdk* httpd* pcre*
 sleep 10
 echo "done"
 exit
