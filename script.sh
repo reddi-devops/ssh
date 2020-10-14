@@ -39,6 +39,7 @@ cp xrdp.ini /etc/xrdp/
 systemctl start xrdp
 systemctl enable xrdp
 yum install gcc-c++ -y
+yum install wget -y
 yum install expat-devel -y
 yum remove java -y
 echo " Downloading and setting up Jboss and apache"
@@ -153,7 +154,20 @@ sleep 20
 make
 sleep 20
 make install
+cd /root/ssh/
 rm -rf jboss* jdk* httpd* pcre*
+wget https://s3.us-east-2.amazonaws.com/kishore.middleware/tomcat-connectors-1.2.48-src.tar.gz
+chmod 777 tomcat-connectors-1.2.48-src.tar.gz
+tar -xzvf tomcat-connectors-1.2.48-src.tar.gz
+cd tomcat-connectors-1.2.48-src
+cd native
+./configure --prefix=/opt/jk/ --with-apxs=/opt/apache2446/bin/apxs
+sleep 20
+make
+sleep 10
+make install
+cd /root/ssh/
+rm -rf tomcat*
 sleep 10
 echo "done"
 exit
