@@ -31,7 +31,7 @@ crontab cron.sh
 echo " Mail setup is testing"
 /bin/echo `hostname`  "Server is up please be informed  "  | mail -s "Server is up at `date` " in.kishore2012@gmail.com,rk.middleware84@gmail.com,rk.mw84@gmail.com,rk.mw84@outlook.com,kishore@reddikishore.live,reddi.apple@gmail.com,reddi.devops@gmail.com,reddi.devops2@gmail.com,krkishore.was@gmail.com,mymailkishore@google-groups.com,rk.mw84@yahoo.com,kishore.devops@gmail.com,kishore.devops2@gmail.com,mw.kishore84@gmail.com
 echo "Enabling GUI"
-yum group install "Server with GUI" -y
+#yum group install "Server with GUI" -y
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 yum -y install xrdp tigervnc-server
 rm /etc/xrdp/xrdp.ini
@@ -116,8 +116,13 @@ echo "ALL are Done"
 echo "Installing Apache"
 #chmod 777 *.gz
 #tar -xzf pcre-8.44.tar.gz
+cd  /root/ssh/
+echo "Downloading httpd"
+sleep 10
 wget https://s3.us-east-2.amazonaws.com/kishore.middleware/httpd-2.4.46.tar.gz
+echo "Downloading pcre"
 wget https://s3.us-east-2.amazonaws.com/kishore.middleware/pcre-8.44.tar.gz
+sleep 10
 chmod 777 pcre-8.44.tar.gz
 echo "files are "
 echo "=============================================================="
