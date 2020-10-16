@@ -7,6 +7,6 @@ fi
 
 # User specific environment and startup programs
 export JAVA_HOME=/opt/jdk1.8.0_241/
-PATH=$PATH:$HOME/.local/bin:$HOME/bin:/opt/jdk1.8.0_241/bin/
+PATH=$PATH:$HOME/.local/bin:$HOME/bin:/opt/jdk1.8.0_241/bin:/opt/mvn/bin
 
 export PATH

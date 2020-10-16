@@ -31,7 +31,7 @@ crontab cron.sh
 echo " Mail setup is testing"
 /bin/echo `hostname`  "Server is up please be informed  "  | mail -s "Server is up at `date` " in.kishore2012@gmail.com,rk.middleware84@gmail.com,rk.mw84@gmail.com,rk.mw84@outlook.com,kishore@reddikishore.live,reddi.apple@gmail.com,reddi.devops@gmail.com,reddi.devops2@gmail.com,krkishore.was@gmail.com,mymailkishore@google-groups.com,rk.mw84@yahoo.com,kishore.devops@gmail.com,kishore.devops2@gmail.com,mw.kishore84@gmail.com
 echo "Enabling GUI"
-#yum group install "Server with GUI" -y
+yum group install "Server with GUI" -y
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
 yum -y install xrdp tigervnc-server
 rm /etc/xrdp/xrdp.ini
@@ -63,8 +63,6 @@ cp -rp all Node-4
 
 echo "Installing Kubernetes"
 
-cp k9s /usr/local/bin/
-cp k9s /bin/
 echo "Disabling swap"
 swapoff -a
 setenforce 0
@@ -115,6 +113,7 @@ source /root/.bash_profile
 echo  "JAVA_HOME is " $JAVA_HOME
 echo "ALL are Done"
 echo "Installing Apache"
+
 #chmod 777 *.gz
 #tar -xzf pcre-8.44.tar.gz
 cd  /root/ssh/
@@ -147,6 +146,8 @@ sleep 20
 make install
 sleep 20
 cd /root/ssh
+tar -xzvf apache-maven-3.6.3-bin.tar.gz
+mv apache-maven-3.6.3 /opt/mvn/
 #itar -xzvf httpd-2.4.46.tar.gz
 cd httpd-2.4.46
 ./configure --prefix=/opt/apache2446 --enable-so --enable-mods-shared=all --enable-proxy --with-pcre=/usr/pcre --enable-debug --enable-ssl
@@ -168,6 +169,18 @@ sleep 10
 make install
 cd /root/ssh/
 rm -rf tomcat*
+echo "Installing and configuring s3cmd"
+yum install s3cmd -y
+cd /root/ssh/
+cp -rp /root/.s3cfg .
+s3cmd get s3://kishore.middleware/jboss-eap-7.2.0.zip
+chmod 777 jboss-eap-7.2.0.zip
+unzip jboss-eap-7.2.0.zip
+cp -rp jboss-eap-7.2 /opt/jboss721
+mv jboss-eap-7.2 /opt/jboss722
+s3cmd get s3://kishore.middleware/k9s
+cp k9s /usr/local/bin/
+cp k9s /bin
 sleep 10
 echo "done"
 exit
