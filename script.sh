@@ -172,7 +172,7 @@ rm -rf tomcat*
 echo "Installing and configuring s3cmd"
 yum install s3cmd -y
 cd /root/ssh/
-cp -rp /root/.s3cfg .
+cp -rp  awss3 /root/.s3cfg
 s3cmd get s3://kishore.middleware/jboss-eap-7.2.0.zip
 chmod 777 jboss-eap-7.2.0.zip
 unzip jboss-eap-7.2.0.zip
