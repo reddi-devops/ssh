@@ -1,4 +1,6 @@
 #/bin/bash
+pwd=`pwd`
+echo " Script for enabling required features "
 echo " Enabling Root Login"
 rm -rf /etc/ssh/ssh_config
 rm -rf /etc/ssh/sshd_config
@@ -50,7 +52,7 @@ rm -rf /root/.bash_profile
 cp .bash_profile /root/
 source /root/.bash_profile
 echo "JAVA_HOME is " $JAVA_HOME
-wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jboss-eap-5.2.0.zip
+wget https://storage.googleapis.com/middlewarefiles/jdk-8u241-linux-x64.tar.gz
 sleep 20
 unzip jboss-eap-5.2.0.zip
 mv jboss-eap-5.2 /opt/jboss52
@@ -116,12 +118,12 @@ echo "Installing Apache"
 
 #chmod 777 *.gz
 #tar -xzf pcre-8.44.tar.gz
-cd  /root/ssh/
+cd $pwd
 echo "Downloading httpd"
 sleep 10
-wget https://s3.us-east-2.amazonaws.com/kishore.middleware/httpd-2.4.46.tar.gz
+wget https://storage.googleapis.com/middlewarefiles/httpd-2.4.46.tar.gz
 echo "Downloading pcre"
-wget https://s3.us-east-2.amazonaws.com/kishore.middleware/pcre-8.44.tar.gz
+wget https://storage.googleapis.com/middlewarefiles/pcre-8.44.tar.gz
 sleep 10
 chmod 777 pcre-8.44.tar.gz
 echo "files are "
@@ -145,7 +147,7 @@ make
 sleep 20
 make install
 sleep 20
-cd /root/ssh
+cd $pwd
 tar -xzvf apache-maven-3.6.3-bin.tar.gz
 mv apache-maven-3.6.3 /opt/mvn/
 #itar -xzvf httpd-2.4.46.tar.gz
@@ -155,9 +157,9 @@ sleep 20
 make
 sleep 20
 make install
-cd /root/ssh/
+cd $pwd
 rm -rf jboss* jdk* httpd* pcre*
-wget https://s3.us-east-2.amazonaws.com/kishore.middleware/tomcat-connectors-1.2.48-src.tar.gz
+wget https://storage.googleapis.com/middlewarefiles/tomcat-connectors-1.2.48-src.tar.gz
 chmod 777 tomcat-connectors-1.2.48-src.tar.gz
 tar -xzvf tomcat-connectors-1.2.48-src.tar.gz
 cd tomcat-connectors-1.2.48-src
@@ -167,20 +169,21 @@ sleep 20
 make
 sleep 10
 make install
-cd /root/ssh/
+cd $pwd
 rm -rf tomcat*
 echo "Installing and configuring s3cmd"
 yum install s3cmd -y
-cd /root/ssh/
+cd $pwd 
 cp -rp  awss3 /root/.s3cfg
-s3cmd get s3://kishore.middleware/jboss-eap-7.2.0.zip
+wget https://storage.googleapis.com/middlewarefiles/jboss-eap-7.2.0.zip
 chmod 777 jboss-eap-7.2.0.zip
 unzip jboss-eap-7.2.0.zip
 cp -rp jboss-eap-7.2 /opt/jboss721
 mv jboss-eap-7.2 /opt/jboss722
-s3cmd get s3://kishore.middleware/k9s
+wget https://storage.googleapis.com/middlewarefiles/k9s
 cp k9s /usr/local/bin/
 cp k9s /bin
+source /root/.bash_profile
 sleep 10
 echo "done"
 exit
