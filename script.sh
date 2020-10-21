@@ -1,4 +1,4 @@
-#/bin/bash
+#bin/bash
 pwd=`pwd`
 echo " Script for enabling required features "
 echo " Enabling Root Login"
@@ -16,20 +16,20 @@ cp -rp inputrc /etc/
 echo "disabling Selinux"
 cp config /etc/selinux/
 echo "Installing Cockpit"
-yum install cockpit -y
-yum install openssl* -y
+yum install cockpit openssl* wget unzip -y
+#yum install openssl* -y
 systemctl enable cockpit
 systemctl start cockpit
 service sshd restart
 #rmmod -v pcspkr
 echo "Downloading files"
-wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz &
-wget https://storage.googleapis.com/middlewarefiles/jdk-8u241-linux-x64.tar.gz &
-wget https://storage.googleapis.com/middlewarefiles/httpd-2.4.46.tar.gz &
-wget https://storage.googleapis.com/middlewarefiles/pcre-8.44.tar.gz &
-wget https://storage.googleapis.com/middlewarefiles/tomcat-connectors-1.2.48-src.tar.gz &
-wget https://storage.googleapis.com/middlewarefiles/jboss-eap-7.2.0.zip &
-wget https://storage.googleapis.com/middlewarefiles/k9s &
+#wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz &
+wget https://storage.googleapis.com/middlewarefiles/jdk-8u241-linux-x64.tar.gz 
+wget https://storage.googleapis.com/middlewarefiles/httpd-2.4.46.tar.gz 
+wget https://storage.googleapis.com/middlewarefiles/pcre-8.44.tar.gz 
+wget https://storage.googleapis.com/middlewarefiles/tomcat-connectors-1.2.48-src.tar.gz 
+wget https://storage.googleapis.com/middlewarefiles/jboss-eap-7.2.0.zip 
+wget https://storage.googleapis.com/middlewarefiles/k9s 
 chmod 777 *.tar.gz
 chmod 777 *.zip
 echo "Installing ssmtp"
