@@ -108,16 +108,6 @@ systemctl start kubelet
 systemctl enable docker
 systemctl start docker
 echo " Initiating kubernetes cluster"
-kubeadm init
-mkdir -p $HOME/.kube
-cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-chown $(id -u):$(id -g) $HOME/.kube/config
-export kubever=$(kubectl version | base64 | tr -d '\n')
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
-echo " Please wait till the kube cluster comes up"
-sleep 60
-kubectl get nodes
-echo "=========================================================="
 yum remove java* -y
 source /root/.bash_profile
 echo  "JAVA_HOME is " $JAVA_HOME
@@ -161,7 +151,7 @@ make
 sleep 20
 make install
 cd $pwd
-rm -rf jboss* jdk* httpd* pcre*
+#rm -rf jboss* jdk* httpd* pcre*
 tar -xzvf tomcat-connectors-1.2.48-src.tar.gz
 cd tomcat-connectors-1.2.48-src
 cd native
