@@ -185,4 +185,6 @@ cp k9s /bin
 source /root/.bash_profile
 sleep 10
 echo "done"
+echo "This is the final one "
 exit
+
