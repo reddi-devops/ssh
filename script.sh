@@ -186,8 +186,11 @@ source /root/.bash_profile
 sleep 10
 echo "Installing Websphere, IHS, Plugins"
 cd cd /opt/IBM/InstallationManager/eclipse/tools/
+echo " Installing Websphere 9"
 ./imcl input $pwd/was9.xml -acceptLicense -sP
+echo " Installing IBM HTTP Server 9"
 ./imcl input $pwd/ihs9.xml -acceptLicense -sP
+echo " Installing Plugins 9"
 ./imcl input $pwd/plugins9.xml -acceptLicense -sP
 
 echo "done"
