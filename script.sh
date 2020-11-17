@@ -1,4 +1,4 @@
-#bin/bash
+﻿#bin/bash
 pwd=`pwd`
 echo " Script for enabling required features "
 echo " Enabling Root Login"
@@ -184,5 +184,11 @@ cp k9s /usr/local/bin/
 cp k9s /bin
 source /root/.bash_profile
 sleep 10
+echo "Installing Websphere, IHS, Plugins"
+cd cd /opt/IBM/InstallationManager/eclipse/tools/
+./imcl input $pwd/was9.xml -acceptLicense -sP
+./imcl input $pwd/ihs9.xml -acceptLicense -sP
+./imcl input $pwd/plugins9.xml -acceptLicense -sP
+
 echo "done"
 exit

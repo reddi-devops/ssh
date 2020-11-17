@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<agent-input>
+  <variables>
+    <variable name='sharedLocation' value='/opt/IBM/IMShared'/>
+  </variables>
+  <server>
+    <repository location='/root/Downloads/IHS9'/>
+  </server>
+  <profile id='IBM HTTP Server V9.0' installLocation='/opt/IBM/HTTPServer9'>
+    <data key='cic.selector.arch' value='x86_64'/>
+    <data key='user.ihs.http.server.service.name.key' value='IBMHTTPServerV9.0'/>
+    <data key='user.ihs.http.server.service.name' value='IBM HTTP Server V9.0'/>
+    <data key='user.ihs.win.serverServicePassword' value='XjTveChg5ba6olBVMK/Reg=='/>
+    <data key='user.ihs.allowNonRootSilentInstall' value='true'/>
+    <data key='user.ihs.win.serverServiceLogOnAsLocalSystem' value='true'/>
+    <data key='user.ihs.win.serverServiceUser' value='root'/>
+    <data key='user.ihs.httpPort' value='80'/>
+  </profile>
+  <install>
+    <!-- IBM HTTP Server for WebSphere Application Server 9.0.5.1 -->
+    <offering profile='IBM HTTP Server V9.0' id='com.ibm.websphere.IHS.v90' version='9.0.5001.20190828_0616' features='core.feature'/>
+    <!-- IBM SDK, Java Technology Edition, Version 8 8.0.5.41 -->
+    <offering profile='IBM HTTP Server V9.0' id='com.ibm.java.jdk.v8' version='8.0.5041.20190924_1031' features='com.ibm.sdk.8'/>
+  </install>
+  <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='${sharedLocation}'/>
+</agent-input>
