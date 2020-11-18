@@ -24,11 +24,11 @@ service sshd restart
 #rmmod -v pcspkr
 echo "Downloading files"
 #wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz &
-wget https://storage.googleapis.com/middlewarefiles/jdk-8u241-linux-x64.tar.gz 
-wget https://storage.googleapis.com/middlewarefiles/httpd-2.4.46.tar.gz 
-wget https://storage.googleapis.com/middlewarefiles/pcre-8.44.tar.gz 
-wget https://storage.googleapis.com/middlewarefiles/tomcat-connectors-1.2.48-src.tar.gz 
-wget https://storage.googleapis.com/middlewarefiles/jboss-eap-7.2.0.zip 
+wget https://storage.googleapis.com/kishorefiles/jdk-8u271-linux-x64.tar.gz 
+wget https://archive.apache.org/dist/httpd/httpd-2.4.46.tar.gz
+wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz 
+wget https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.48-src.tar.gz 
+wget https://storage.googleapis.com/kishorefiles/jboss-eap-7.3.0.zip
 wget https://storage.googleapis.com/middlewarefiles/k9s 
 chmod 777 *.tar.gz
 chmod 777 *.zip
@@ -56,7 +56,7 @@ yum install expat-devel -y
 yum remove java -y
 echo " Downloading and setting up Jboss and apache"
 slepp 30
-tar -xzf jdk-8u241-linux-x64.tar.gz -C /opt/
+tar -xzf jdk-8u271-linux-x64.tar.gz -C /opt/
 rm -rf /root/.bash_profile
 cp .bash_profile /root/
 source /root/.bash_profile
@@ -176,22 +176,47 @@ echo "Installing and configuring s3cmd"
 yum install s3cmd -y
 cd $pwd 
 cp -rp  awss3 /root/.s3cfg
-chmod 777 jboss-eap-7.2.0.zip
-unzip jboss-eap-7.2.0.zip
-cp -rp jboss-eap-7.2 /opt/jboss721
-mv jboss-eap-7.2 /opt/jboss722
+chmod 777 jboss-eap-7.3.0.zip
+unzip jboss-eap-7.3.0.zip
+cp -rp jboss-eap-7.3 /opt/jboss721
+mv jboss-eap-7.3 /opt/jboss722
 cp k9s /usr/local/bin/
 cp k9s /bin
 source /root/.bash_profile
 sleep 10
+echo " Downloading WAS files"
+cd $pwd
+echo "==========================================="
+wget https://storage.googleapis.com/kishorefiles/agent.installer.linux.gtk.x86_64_1.8.9003.20190204_1751.zip
+mkdir agent
+mv agent.installer.linux.gtk.x86_64_1.8.9003.20190204_1751.zip agent/
+cd agent
+unzip agent.installer.linux.gtk.x86_64_1.8.9003.20190204_1751.zip
+./installc -acceptLicense
+cd $pwd
+wget https://storage.googleapis.com/kishorefiles/WAS9.tar 
+wget https://storage.googleapis.com/kishorefiles/IHS9.tar
+wget https://storage.googleapis.com/kishorefiles/Plugin9.tar
+wget https://storage.googleapis.com/kishorefiles/was9.xml
+wget https://storage.googleapis.com/kishorefiles/ihs9.xml
+wget https://storage.googleapis.com/kishorefiles/plugins9.xml
+echo "======================================================"
+chmod 777 *.tar
+tar -xf WAS9.tar
+tar -xf IHS9.tar
+tar -xf Plugin9.tar
+sleep 10
+#rm -rf *.tar
 echo "Installing Websphere, IHS, Plugins"
-cd cd /opt/IBM/InstallationManager/eclipse/tools/
+cd /opt/IBM/InstallationManager/eclipse/tools/
+
 echo " Installing Websphere 9"
 ./imcl input $pwd/was9.xml -acceptLicense -sP
 echo " Installing IBM HTTP Server 9"
 ./imcl input $pwd/ihs9.xml -acceptLicense -sP
 echo " Installing Plugins 9"
 ./imcl input $pwd/plugins9.xml -acceptLicense -sP
-
+cd $pwd
+rm -rf WAS9 IHS9 Plugin9
 echo "done"
 exit
