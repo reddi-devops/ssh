@@ -29,7 +29,7 @@ wget https://archive.apache.org/dist/httpd/httpd-2.4.46.tar.gz
 wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz 
 wget https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.48-src.tar.gz 
 wget https://storage.googleapis.com/kishorefiles/jboss-eap-7.3.0.zip
-wget https://storage.googleapis.com/middlewarefiles/k9s 
+#wget https://storage.googleapis.com/middlewarefiles/k9s 
 chmod 777 *.tar.gz
 chmod 777 *.zip
 echo "Installing ssmtp"
@@ -107,16 +107,16 @@ systemctl enable kubelet
 systemctl start kubelet
 systemctl enable docker
 systemctl start docker
-#echo " Initiating kubernetes cluster"
-#kubeadm init
-#mkdir -p $HOME/.kube
-#cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-#chown $(id -u):$(id -g) $HOME/.kube/config
-#export kubever=$(kubectl version | base64 | tr -d '\n')
-#kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
-#echo " Please wait till the kube cluster comes up"
-#sleep 60
-#kubectl get nodes
+echo " Initiating kubernetes cluster"
+kubeadm init
+mkdir -p $HOME/.kube
+cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config
+export kubever=$(kubectl version | base64 | tr -d '\n')
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
+echo " Please wait till the kube cluster comes up"
+sleep 60
+kubectl get nodes
 echo "=========================================================="
 yum remove java* -y
 source /root/.bash_profile
@@ -153,7 +153,7 @@ sleep 20
 cd $pwd
 tar -xzvf apache-maven-3.6.3-bin.tar.gz
 mv apache-maven-3.6.3 /opt/mvn/
-#itar -xzvf httpd-2.4.46.tar.gz
+tar -xzvf httpd-2.4.46.tar.gz
 cd httpd-2.4.46
 ./configure --prefix=/opt/apache2446 --enable-so --enable-mods-shared=all --enable-proxy --with-pcre=/usr/pcre --enable-debug --enable-ssl
 sleep 20
