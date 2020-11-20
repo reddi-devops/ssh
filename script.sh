@@ -200,11 +200,13 @@ wget https://storage.googleapis.com/kishorefiles/Plugin9.tar
 wget https://storage.googleapis.com/kishorefiles/was9.xml
 wget https://storage.googleapis.com/kishorefiles/ihs9.xml
 wget https://storage.googleapis.com/kishorefiles/plugins9.xml
+wget https://storage.googleapis.com/kishorefiles/IBM_MQ_9.2.0_LINUX_X86-64_TRIAL.tar.gz
 echo "======================================================"
 chmod 777 *.tar
 tar -xf WAS9.tar
 tar -xf IHS9.tar
 tar -xf Plugin9.tar
+tar -xzvf IBM_MQ_9.2.0_LINUX_X86-64_TRIAL.tar.gz
 sleep 10
 #rm -rf *.tar
 echo "Installing Websphere, IHS, Plugins"
