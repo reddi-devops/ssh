@@ -1,5 +1,6 @@
 ﻿#bin/bash
 pwd=`pwd`
+echo "==================================================================="
 echo " Script for enabling required features "
 echo " Enabling Root Login"
 rm -rf /etc/ssh/ssh_config
@@ -17,7 +18,6 @@ echo "disabling Selinux"
 cp config /etc/selinux/
 echo "Installing Cockpit"
 yum install cockpit openssl* wget unzip -y
-#yum install openssl* -y
 systemctl enable cockpit
 systemctl start cockpit
 service sshd restart
