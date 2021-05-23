@@ -22,16 +22,6 @@ systemctl enable cockpit
 systemctl start cockpit
 service sshd restart
 #rmmod -v pcspkr
-echo "Downloading files"
-#wget https://s3.us-east-2.amazonaws.com/kishore.middleware/jdk-8u241-linux-x64.tar.gz &
-wget https://storage.googleapis.com/kishorefiles/jdk-8u271-linux-x64.tar.gz 
-wget https://archive.apache.org/dist/httpd/httpd-2.4.46.tar.gz
-wget https://ftp.pcre.org/pub/pcre/pcre-8.44.tar.gz 
-wget https://archive.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.48-src.tar.gz 
-wget https://storage.googleapis.com/kishorefiles/jboss-eap-7.3.0.zip
-#wget https://storage.googleapis.com/middlewarefiles/k9s 
-chmod 777 *.tar.gz
-chmod 777 *.zip
 echo "Installing ssmtp"
 yum install ssmtp-2.61-11.5.3.x86_64.rpm -y
 mv /sbin/sendmail /temp
