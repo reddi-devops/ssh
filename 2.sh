@@ -1,4 +1,5 @@
 echo "Installing ssmtp"
+yum install ssmtp -y
 yum install ssmtp-2.61-11.5.3.x86_64.rpm -y
 mv /sbin/sendmail /temp
 ln -s /usr/sbin/ssmtp /usr/sbin/sendmail
@@ -16,3 +17,4 @@ rm /etc/xrdp/xrdp.ini
 cp xrdp.ini /etc/xrdp/
 systemctl start xrdp
 systemctl enable xrdp
+yum install nmon -y
