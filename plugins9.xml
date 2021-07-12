@@ -4,7 +4,7 @@
     <variable name='sharedLocation' value='/opt/IBM/IMShared'/>
   </variables>
   <server>
-    <repository location='/root/Downloads/Plugin9'/>
+    <repository location='/root/Plugin9'/>
   </server>
   <profile id='Web Server Plug-ins for IBM WebSphere Application Server V9.0' installLocation='/opt/IBM/WebSphere/Plugins'>
     <data key='cic.selector.arch' value='x86_64'/>

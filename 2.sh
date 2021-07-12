@@ -18,3 +18,24 @@ cp xrdp.ini /etc/xrdp/
 systemctl start xrdp
 systemctl enable xrdp
 yum install nmon -y
+yum install -y libXau.i686
+yum install -y libXext.i686
+yum install -y libxcb.i686
+yum install -y compat-libstdc++-33.i686
+yum install -y compat-db42.i686
+yum install -y compat-db.i686
+yum install -y compat-db43.i686
+yum install -y libXi.i686
+yum install -y libX11.i686
+yum install -y libXtst.i686
+yum install -y libXrender.i686
+yum install -y libXft.i686
+yum install -y libXt.i686
+yum install -y libXp.i686
+yum install -y libstdc++.i686
+yum install -y libICE.i686
+yum install -y compat-libtermcap.i686
+yum install -y libidn.i686
+yum install -y libSM.i686
+yum install -y libuuid.i686
+yum install -y gcc-c++

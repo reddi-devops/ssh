@@ -4,7 +4,7 @@
     <variable name='sharedLocation' value='/opt/IBM/IMShared'/>
   </variables>
   <server>
-    <repository location='/root/Downloads/WAS9'/>
+    <repository location='/root/WAS9'/>
   </server>
   <profile id='IBM WebSphere Application Server V9.0' installLocation='/opt/IBM/WebSphere/AppServer9'>
     <data key='cic.selector.arch' value='x86_64'/>

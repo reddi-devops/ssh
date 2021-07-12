@@ -4,7 +4,7 @@
     <variable name='sharedLocation' value='/opt/IBM/IMShared'/>
   </variables>
   <server>
-    <repository location='/root/Downloads/IHS9'/>
+    <repository location='/root/IHS9'/>
   </server>
   <profile id='IBM HTTP Server V9.0' installLocation='/opt/IBM/HTTPServer9'>
     <data key='cic.selector.arch' value='x86_64'/>
