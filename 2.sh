@@ -41,3 +41,5 @@ yum install -y libSM.i686
 yum install -y libuuid.i686
 yum install -y gcc-c++
 yum install -y libstdc++.so*
+yum install -y  megatools-1.11.1-2.el8.x86_64.rpm
+cp .megarc /root/
