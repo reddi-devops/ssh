@@ -1,4 +1,5 @@
 echo "Installing ssmtp"
+dnf install compat-openssl10* -y
 yum install ssmtp -y
 yum install ssmtp-2.61-11.5.3.x86_64.rpm -y
 mv /sbin/sendmail /temp
