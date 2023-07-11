@@ -40,4 +40,4 @@ yum install -y libidn.i686
 yum install -y libSM.i686
 yum install -y libuuid.i686
 yum install -y gcc-c++
-yum install libstdc++.so*
+yum install -y libstdc++.so*
